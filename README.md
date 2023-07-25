@@ -29,3 +29,6 @@ As optionals elements, if we have a 3D printer we can build a case and a Frame t
 [LINK](https://www.thingiverse.com/thing:4127683/files)
 
 ## *CODE DESCRIPTION*
+
+
+https://www.youtube.com/watch?v=6XGeM2__Zx4

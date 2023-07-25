@@ -1,12 +1,18 @@
+#include <Arduino.h>
 // LED MANIPULATION
 #include <FastLED.h>
 #define ROWS 16
 #define COLUMNS 16
 #define NUM_LEDS ROWS *COLUMNS
+// NODECUN => GPIO5 = D1
+// ESP32 => GPIO5 = D5
 #define DATA_PIN 5
 #define LED_TYPE WS2812B
 #define COLOR_ORDER GRB
 #define BRIGHTNESS 50
+
+// INTERNAL LED
+#define LED_INTERNAL_PIN 2
 
 int muxStatus = 0;
 
@@ -29,15 +35,22 @@ long sprite[ROWS][COLUMNS] = {
     {0x000000, 0x000000, 0x000000, 0xb07f02, 0xaf7e00, 0xaf7e00, 0x000000, 0x000000, 0x000000, 0x000000, 0xb07f02, 0xaf7e00, 0xaf7e00, 0x000000, 0x000000, 0x000000},
     {0x000000, 0x000000, 0xaf7e00, 0xaf7e00, 0xaf7e00, 0xb07f02, 0x000000, 0x000000, 0x000000, 0x000000, 0xaf7e00, 0xaf7e00, 0xaf7e00, 0xaf7e00, 0x000000, 0x000000}};
 
+// put function declarations here:
+int getArrayPosFromMatrix(int x, int y);
+
 void setup()
 {
   // Load LED matrix
   FastLED.addLeds<LED_TYPE, DATA_PIN, COLOR_ORDER>(leds, NUM_LEDS);
   FastLED.setBrightness(BRIGHTNESS);
+
+  pinMode(LED_INTERNAL_PIN, OUTPUT);
 }
 
 void loop()
 {
+  // put your main code here, to run repeatedly:
+
   FastLED.clear();
 
   switch (muxStatus)
@@ -71,6 +84,7 @@ void loop()
   }
 }
 
+// put function definitions here:
 int getArrayPosFromMatrix(int x, int y)
 {
   return x * COLUMNS + y;

@@ -1,0 +1,7 @@
+{
+    "cmake.sourceDirectory": "C:/Users/Alberto/Desktop/Projects/ESP32-Led-matrix/.pio/libdeps/nodemcuv2/FastLED",
+    "files.associations": {
+        "chrono": "cpp",
+        "algorithm": "cpp"
+    }
+}
